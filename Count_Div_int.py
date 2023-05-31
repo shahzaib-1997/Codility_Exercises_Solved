@@ -16,6 +16,14 @@ K is an integer within the range [1..2,000,000,000];
 A ≤ B.
 '''
 
+def solution_chatgpt(A, B, K):
+
+    count_b = B // K
+    count_a_minus_one = (A - 1) // K
+    count = count_b - count_a_minus_one
+
+    return count
+
 def solution(A, B, K):
     div_int = 0
 
@@ -31,3 +39,4 @@ def solution(A, B, K):
     return div_int
 
 print(solution(1, 14, 2))
+print(solution_chatgpt(11, 345, 17))
