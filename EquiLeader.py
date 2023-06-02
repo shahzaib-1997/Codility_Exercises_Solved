@@ -41,3 +41,37 @@ N is an integer within the range [1..100,000];
 each element of array A is an integer within the range [−1,000,000,000..1,000,000,000].
 '''
 
+def lead(A):
+    n = len(A)
+    size = 0
+    for k in range(n):
+        if (size == 0):
+            size += 1
+            leader = A[k]
+        elif (leader != A[k]):
+            size -= 1
+        else:
+            size += 1
+    
+    return leader if size > 0 else -1
+
+def solution(A):
+    count = 0
+    leader = lead(A)
+    leader_count = A.count(leader)
+
+    if leader_count > len(A) // 2:
+        left_count = 0
+        right_count = leader_count
+    
+        for i in range(len(A) - 1):
+            if A[i] == leader:
+                left_count += 1
+                right_count -= 1
+            
+            if left_count > (i + 1) // 2 and right_count > (len(A) - i - 1) // 2:
+                count += 1
+
+    return count
+
+print(solution([4, 3, 4, 4, 4, 2]))
