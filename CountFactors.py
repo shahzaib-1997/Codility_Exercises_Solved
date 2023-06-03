@@ -16,6 +16,25 @@ Write an efficient algorithm for the following assumptions:
 N is an integer within the range [1..2,147,483,647].
 '''
 
+import math
+
+def solution_chatgpt(N):
+
+    if N > 1:
+        factor = 2
+        sqrt_N = int(math.sqrt(N))
+        for n in range(2,sqrt_N + 1):
+            if N % n == 0:
+                factor += 2
+        
+        if sqrt_N * sqrt_N == N:
+            factor -= 1
+
+    else: 
+        factor = 1
+        
+    return factor
+
 def solution(N):
 
     if N > 1:
@@ -29,3 +48,4 @@ def solution(N):
     return factor
 
 print(solution(24))
+print(solution_chatgpt(24))
